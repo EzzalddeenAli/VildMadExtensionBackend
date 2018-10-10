@@ -4,7 +4,11 @@
   "description": "",
   "main": "VildMadExtensionBackendApi.js",
   "scripts": {
+    "start": "node VildMadExtensionBackendApi.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines":{
+    "node":"8.11.1"
   },
   "author": "",
   "license": "ISC",

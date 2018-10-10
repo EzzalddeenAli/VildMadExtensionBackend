@@ -10,6 +10,6 @@ app.get("/", function(req, res){
     res.send("Welcome to Vild Mad Extension Backend API");
 });
 
-app.get("/", function(req, res){
+app.get("*", function(req, res){
     res.send("This is the default route for Vild Mad Extension Backend API");
 });

@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const logger = require('morgan');
-const config = require('./configurations.js');
+const config = require('./configurations1.js');
 
 // Setup mongoose & MongoDB connection
 mongoose.Promise = global.Promise;

@@ -25,11 +25,11 @@ app.use('/ingredients', ingredients);
 app.use('/findings', findings);
 
 // Catch 404 Errors and forward them to error handler
-app.use((req, res, next) => {
-    const err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
+// app.use((req, res, next) => {
+//     const err = new Error('Not Found');
+//     err.status = 404;
+//     next(err);
+// });
 
 // Error Handler function 
 // app.use((err, req, res, next) => {

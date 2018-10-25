@@ -32,18 +32,18 @@ app.use((req, res, next) => {
 });
 
 // Error Handler function 
-app.use((err, req, res, next) => {
-    const error = app.get('env') === 'development' ? err : {};
-    const status = err.status || 500;
+// app.use((err, req, res, next) => {
+//     const error = app.get('env') === 'development' ? err : {};
+//     const status = err.status || 500;
 
-    res.status(status).json({
-        error: {
-            message: error.message
-        }
-    });
+//     res.status(status).json({
+//         error: {
+//             message: error.message
+//         }
+//     });
 
-    console.error(err);
-});
+//     console.error(err);
+// });
 
 app.get("/", function(req, res){
     res.send("Welcome to Vild Mad Extension Backend API");

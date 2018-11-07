@@ -4,7 +4,13 @@ const router = require('express-promise-router')();
 const findingsController = require('../controllers/findings');
 
 router.route('/')
-    .get(findingsController.get)
+    .get(findingsController.getAll)
     .post(findingsController.createFinding);
+
+router.route('/:id')
+    .delete(findingsController.deleteFinding);
+
+router.route('/user/:userId')
+    .get(findingsController.getByUserId);
 
 module.exports = router;

@@ -20,9 +20,9 @@ const users = require('./routes/users');
 const ingredients = require('./routes/ingredients');
 const findings = require('./routes/findings');
 
-app.use('/users', users);
-app.use('/ingredients', ingredients);
-app.use('/findings', findings);
+app.use('/api/users', users);
+app.use('/api/ingredients', ingredients);
+app.use('/api/findings', findings);
 
 // Catch 404 Errors and forward them to error handler
 app.use((req, res, next) => {
@@ -48,4 +48,4 @@ app.use((err, req, res, next) => {
 
 // Start server
 const port = process.env.PORT || 3000;
-app.listen(3000, () => { console.log(`Server listening on port ${port}`); });
+app.listen(port, () => { console.log(`Server listening on port ${port}`); });

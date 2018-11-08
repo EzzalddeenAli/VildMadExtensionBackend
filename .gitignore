@@ -3,3 +3,5 @@ node_modules/
 .vscode/
 my_workspace_config_file.code-workspace
 .gitignore
+node_modules/
+config.js

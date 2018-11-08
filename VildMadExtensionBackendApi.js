@@ -14,7 +14,6 @@ const app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
 
-
 // Routes
 const users = require('./routes/users');
 const ingredients = require('./routes/ingredients');
@@ -44,7 +43,6 @@ app.use((err, req, res, next) => {
 
     console.error(err);
 });
-
 
 // Start server
 const port = process.env.PORT || 3000;

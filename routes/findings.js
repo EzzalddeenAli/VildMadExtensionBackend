@@ -8,6 +8,7 @@ router.route('/')
     .post(findingsController.createFinding);
 
 router.route('/:id')
+    .put(findingsController.updateFinding)
     .delete(findingsController.deleteFinding);
 
 router.route('/user/:userId')

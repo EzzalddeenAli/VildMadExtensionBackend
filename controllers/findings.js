@@ -32,8 +32,8 @@ let self = module.exports = {
         const newFinding = new Finding({
             latitude: data.latitude,
             longitude: data.longitude,
-            ingredient: data.ingredient,
-            user: data.user
+            user: data.user,
+            ingredient: data.ingredient            
         });
         
         console.log("The new finding: " + newFinding);        

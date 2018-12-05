@@ -28,15 +28,77 @@ let self = module.exports = {
     },
 
     createFinding: async (req, res, next) => {
-        const newFinding = new Finding(req.body);
-        const finding = await newFinding.save();
-        res.status(201).json(finding);
+        let data = req.body;
+        const newFinding = new Finding({
+            latitude: data.latitude,
+            longitude: data.longitude,
+            ingredient: data.ingredient,
+            user: data.user
+        });
+
+        await newFinding.save();
+        res.status(201).json(newFinding);
+    },
+
+    updateFinding: async (req, res, next) => {
+        const finding = req.body;
+        const findingID = req.params.id;
+
+        if (!findingID) {
+            const err = new Error(`The ID of the requested finding is missing`);
+            err.status = 400;
+            return next(err);
+        }
+
+        if (!finding) {
+            const err = new Error(`The finding is not supplied`);
+            err.status = 400;
+            return next(err);
+        }
+
+        if (finding._id !== findingID) {
+            const err = new Error(`The finding IDs are different: ${finding._id} and ${findingID}`);
+            err.status = 400;
+            return next(err);
+        }
+
+        Finding.findOneAndUpdate({ _id: findingID }, finding, (err, updatedFinding) => {
+            if (err) {
+                return next(err);
+            }
+
+            if (!updatedFinding) {
+                const err = new Error('The finding does not exist');
+                err.status = 404;
+                return next(err);
+            }
+
+            return res.status(200).json(updatedFinding);
+        });
     },
 
     deleteFinding: async (req, res, next) => {
         let findingId = req.params.id;
-        await Finding.findOneAndDelete(findingId);
-        res.status(204).json();
+
+        if (!findingId) {
+            const err = new Error(`The ID of the requested finding is missing`);
+            err.status = 400;
+            return next(err);
+        }
+
+        await Finding.findOneAndDelete({ _id: findingId }, (err, deletedFinding) => {
+            if (err) {
+                return next(err);
+            }
+
+            if (!deletedFinding) {
+                const err = new Error('The finding does not exist');
+                err.status = 404;
+                return next(err);
+            }
+
+            return res.status(204).json();
+        });
     },
 
     filterFindingsByDistance: (findings, latitude, longitude, inRadius) => {

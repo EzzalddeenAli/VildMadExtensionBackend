@@ -36,8 +36,11 @@ let self = module.exports = {
             user: data.user
         });
 
+        console.log("this is a test 1");
+        console.log(newFinding);
+        console.log("this is a test 2");
         await newFinding.save();
-        res.status(201).json(newFinding);
+        res.status(201).json(newFinding);        
     },
 
     updateFinding: async (req, res, next) => {

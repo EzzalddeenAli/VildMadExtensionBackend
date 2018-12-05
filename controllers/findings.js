@@ -76,6 +76,9 @@ let self = module.exports = {
                 return next(err);
             }
 
+            console.log("The updated finding: " + updatedFinding); 
+            updatedFinding.user = null;         // Ruben: Temporary solution
+            updatedFinding.ingredient = null;   // Ruben: Temporary solution
             return res.status(200).json(updatedFinding);
         });
     },

@@ -35,10 +35,8 @@ let self = module.exports = {
             ingredient: data.ingredient,
             user: data.user
         });
-
-        console.log("this is a test 1");
-        console.log(newFinding);
-        console.log("this is a test 2");
+        
+        console.log("The new finding: " + newFinding);        
         await newFinding.save();
         res.status(201).json(newFinding);        
     },

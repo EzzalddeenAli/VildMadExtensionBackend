@@ -32,7 +32,7 @@ let self = module.exports = {
         const newFinding = new Finding({
             latitude: data.latitude,
             longitude: data.longitude,
-            ingredient: data.ingredient,
+            ingredient: "{" + data.ingredient + "}",
             user: data.user
         });
         

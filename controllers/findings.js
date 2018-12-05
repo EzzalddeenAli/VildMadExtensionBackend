@@ -38,6 +38,8 @@ let self = module.exports = {
         
         console.log("The new finding: " + newFinding);        
         await newFinding.save();
+        newFinding.user = null;         // Ruben: Temporary solution
+        newFinding.ingredient = null;   // Ruben: Temporary solution
         res.status(201).json(newFinding);        
     },
 

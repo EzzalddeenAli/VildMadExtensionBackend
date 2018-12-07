@@ -92,16 +92,10 @@ let self = module.exports = {
             return next(err);
         }
 
-        await Finding.findOneAndDelete({ _id: findingId }, (err, deletedFinding) => {
+        await Finding.findOneAndDelete({ _id: findingId }, (err) => {
             if (err) {
                 return next(err);
-            }
-
-            if (!deletedFinding) {
-                const err = new Error('The finding does not exist');
-                err.status = 404;
-                return next(err);
-            }
+            }           
 
             return res.status(204).json();
         });
